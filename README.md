@@ -45,8 +45,6 @@ Dữ liệu đầu vào gồm **6 file Excel** đặt trong `data/raw/` trên m�
 | Đơn WIN theo tiêu chí dữ liệu | 790 |
 | Đơn LOST theo tiêu chí dữ liệu | 299 |
 
-Các con số trên là **snapshot**, có thể thay đổi khi dữ liệu nguồn hoặc quy tắc xử lý được cập nhật. Project **không tự tải dữ liệu nội bộ** từ Internet.
-
 ## 4. Cấu trúc dự án
 
 ```text
@@ -101,8 +99,6 @@ py -3.12 -m venv .venv
 
 Trên macOS/Linux, thay `py -3.12` bằng trình Python 3.12 tương ứng và sử dụng `.venv/bin/python` thay cho `.venv\Scripts\python.exe`.
 
-Các bước chạy dữ liệu cần 6 tệp Excel có cấu trúc phù hợp trong `data/raw/`. Bạn phải có quyền hợp lệ để sử dụng chúng.
-
 ## 6. Chạy Data Pipeline
 
 Tại thư mục gốc repository:
@@ -123,8 +119,6 @@ Một số bảng đầu ra quan trọng:
 | `mart_order_items.csv` | Dữ liệu dòng nguồn cho phân tích |
 | `mart_product_items.csv` | Dữ liệu phân tích ở cấp sản phẩm |
 | `unresolved_items.csv` | Những dòng cần tiếp tục kiểm tra hoặc đối soát |
-
-> Lưu ý: ở **bản ZIP được kiểm tra**, pipeline vẫn còn thành phần Forecast. Nếu mục tiêu là công bố phiên bản *không Forecast*, cần loại bỏ thành phần này khỏi mã nguồn, tài liệu và kiểm thử trước khi phát hành repository.
 
 ## 7. Bài toán dự đoán WIN/LOST
 
@@ -178,8 +172,6 @@ Các khu vực chính:
 | **EDA** | Khám phá dữ liệu theo thời gian, khách hàng, sản phẩm, tình trạng thiếu dữ liệu |
 | **Prediction** | Mô phỏng xác suất WIN, so sánh các mô hình, xem đánh giá và giải thích |
 
-Để sử dụng dashboard đầy đủ, cần **chạy pipeline và huấn luyện mô hình tại máy được cấp quyền dữ liệu trước**. Chỉ clone repository sẽ chưa có dữ liệu/model để hiển thị kết quả thật.
-
 ## 9. Business Analytics
 
 ### Exploratory Data Analysis (EDA)
@@ -207,7 +199,7 @@ Kiểm thử (trên môi trường có dữ liệu và fixtures phù hợp):
 .\.venv\Scripts\python.exe -m pytest tests approval_prediction/test_approval.py approval_prediction/app/test_app.py -p no:cacheprovider
 ```
 
-Kiểm định end-to-end (chạy lại dữ liệu, mô hình và kiểm thử; tốn tài nguyên hơn):
+Kiểm định end-to-end:
 
 ```powershell
 .\.venv\Scripts\python.exe verify_project.py
