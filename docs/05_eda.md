@@ -28,5 +28,3 @@ Tháng nằm trong lịch theo dõi nhưng không có dòng KM phù hợp đư�
 - Nhóm generic có thể tham gia cơ cấu **họ** sản phẩm nhưng không tự tạo thêm mã tham chiếu chuẩn để xếp hạng mã.
 - Với ABC, mẫu số không đại diện tổng nguồn nếu vẫn tồn tại dòng unresolved. Cần báo cả phần độ phủ quy thuộc, không chỉ phần trăm A/B/C.
 - Nhóm khách tạo ra từ hậu tố mã đơn không xác định được khách pháp lý và có thể gom nhiều giao dịch không cùng khách.
-
-Biểu đồ đầu ra cục bộ do `scripts/04_eda.py` tạo. Không đưa biểu đồ có tên khách, mã sản phẩm nội bộ, đơn giá hoặc lượng giao dịch nhận diện được lên GitHub công khai nếu chưa ẩn thông tin và được phép phát hành.
