@@ -84,5 +84,3 @@ Trong kết quả test của mô hình được chọn, ma trận nhầm lẫn �
 ## 7. Truy vết thực thi
 
 Nhãn: `approval_prediction/target.py`; thiết lập feature và chia tập: `approval_prediction/config.py` / `approval_prediction/data.py`; huấn luyện & chọn model: `approval_prediction/modeling.py` / `approval_prediction/run.py`; đánh giá: `approval_prediction/evaluation.py`; kiểm tra schema/hash: `approval_prediction/registry.py` / `approval_prediction/schema.py`.
-
-Các tệp artifact, bảng trường hợp sai và model bundles có thể chứa khóa/metadata nội bộ: chỉ dùng cục bộ, không liên kết hoặc phát hành trong tài liệu GitHub công khai.
