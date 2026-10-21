@@ -38,5 +38,3 @@ Dữ liệu Excel nội bộ (chỉ lưu cục bộ, không đưa lên GitHub c�
 ## Tài liệu
 
 Đọc theo thứ tự [Data dictionary](02_data_dictionary.md) → [Pipeline](03_data_pipeline.md) → [Quality](04_data_quality.md) → [EDA](05_eda.md) → [RFV](06_rfv_analysis.md) → [Forecast](07_forecasting.md) → [WIN/LOST](08_approval_prediction.md) → [Ứng dụng](09_streamlit_app.md) → [Tái lập](10_reproducibility.md).
-
-**Quy định công khai:** các tài liệu này chỉ mô tả phương pháp và số liệu tổng hợp đã được ẩn định danh. File Excel, bảng giá, thông tin khách hàng, mã đơn cụ thể, tập CSV và model artifacts có thể chứa dữ liệu doanh nghiệp, không mặc nhiên được phép phát hành cùng mã nguồn. Việc công khai số liệu tổng hợp vẫn cần được kiểm tra theo quy định của doanh nghiệp.
