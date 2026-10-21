@@ -2,8 +2,6 @@
 
 Dự án xây dựng quy trình **phân tích dữ liệu đơn hàng**, đánh giá khách hàng và sản phẩm, đồng thời ứng dụng **Machine Learning / Deep Learning** để dự đoán khả năng một đơn hàng thuộc nhóm **WIN** hoặc **LOST** theo tiêu chí nghiệp vụ được doanh nghiệp xác nhận.
 
-Công nghệ chính: **Python · Pandas · Scikit-learn · XGBoost · TensorFlow/Keras · Streamlit · Plotly**.
-
 
 ## 1. Giới thiệu
 
