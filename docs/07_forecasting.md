@@ -31,5 +31,3 @@ Kết quả dự báo được lưu như snapshot của lần huấn luyện. Kh
 WAPE validation 139.04% cho thấy sai số cao; WAPE test 69.14% vẫn chưa đủ cơ sở dùng baseline này để ra quyết định kế hoạch. Hai tập có mức sai số khác nhau, không được khẳng định mô hình có độ chính xác ổn định. Lịch sử ngắn, nhiễu do dự án/cực trị, tháng thưa và giả định nguồn đầy đủ là các rủi ro chính. **Không có prediction interval đã được hiệu chuẩn.**
 
 Holdout hồi cứu có nguy cơ *prior analyst exposure*; khả năng dự báo thực tế cần được kiểm chứng **prospective** trên kỳ phát sinh sau thời điểm đóng băng dự báo. `prospective.py` lưu thời điểm phát hành thật và chỉ chấm kỳ hoàn tất khi người dùng xác nhận nguồn đã đầy đủ, không lùi ngày phát hành.
-
-**Quy tắc công khai:** không đính kèm bảng forecast KM chi tiết, danh sách dự án/mã đơn, mã khách, hay dự báo theo khách/sản phẩm nếu chưa được doanh nghiệp cho phép.
