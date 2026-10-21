@@ -31,9 +31,3 @@ Số liệu dưới đây phản ánh **snapshot đầu vào được dùng đ�
 - **Cực trị thống kê** không bị xóa khỏi ledger; chỉ được lọc trong các phân tích có khai báo rõ phạm vi và phải tách khỏi các dự án được xác nhận.
 - **Ứng viên trùng** cần có kiểm tra nguồn, không xóa theo quy tắc trùng số lượng/văn bản đơn giản.
 - **Mã khách trống** không được suy ra là một khách hàng định danh duy nhất từ chuỗi ký tự của đơn.
-
-## Kiểm tra khả năng tái lập
-
-Các kiểm thử bảo toàn số dòng, khóa, đối soát nguồn, thời gian và semantics ở `tests/` / `verify_project.py`. Báo cáo đối soát và log chi tiết được tạo trong `outputs/` **chỉ để kiểm tra nội bộ**; không dẫn link từ docs công khai vì có thể chứa thông tin định danh và được `.gitignore` loại khỏi repository.
-
-> Các chỉ số có thể thay đổi nếu dữ liệu nguồn thay đổi. Chỉ công bố bản tổng hợp này khi doanh nghiệp cho phép chia sẻ thống kê đã ẩn danh.
