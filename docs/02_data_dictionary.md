@@ -347,4 +347,3 @@ Các đặc trưng lịch sử sử dụng đơn ở **tháng nhỏ hơn tháng 
 
 - `null` không đồng nghĩa `0`, đặc biệt ở `so_luong`, `so_luong_km`, `recency_months`.
 - Cột `gia_tri_uoc_tinh` là phép quy đổi tham khảo theo dữ liệu giá, **không dùng kết luận doanh thu**; giá có thể thiếu hoặc không đúng thời điểm hiệu lực.
-- Các bảng trên mô tả schema, **không phải tập data có thể tải về công khai**. Không đưa tệp CSV và ví dụ giá trị thực của khách/đơn vào GitHub khi chưa có phép từ doanh nghiệp.
