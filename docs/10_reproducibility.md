@@ -56,7 +56,3 @@ outputs/
 ```
 
 **Cảnh báo:** `.gitignore` chỉ ngăn file *chưa được track*. Nếu thông tin nội bộ từng được commit, phải **kiểm tra toàn bộ git history và xử lý theo quy trình bảo mật**, không chỉ xóa file ở commit mới. Các file mã nguồn/config/test cũng có thể chứa mã đơn thực tế, danh sách dự án, đơn giá hoặc chuỗi khách hàng; **không tự động xem code là đã vô hại**. Cần rà soát toàn repository và được doanh nghiệp phê duyệt trước khi chuyển `Public`.
-
-## 4. Giới hạn tái lập cho người xem GitHub
-
-Repository không có dữ liệu doanh nghiệp chỉ hỗ trợ **đọc phương pháp/code**, không cho phép người ngoài xác minh lại số liệu từ dữ liệu gốc. Mọi số liệu mô hình và forecast là kết quả của snapshot nội bộ được mô tả, không phải kết quả huấn luyện trên dữ liệu demo public. Việc không công bố output có chứa thông tin doanh nghiệp là hành vi bảo vệ dữ liệu, **không phải bằng chứng mọi thí nghiệm đã được tái lập độc lập**.
