@@ -18,9 +18,3 @@
 - Lịch sử WIN/LOST của khách chỉ mang tính **mô tả hồi cứu**, không tham gia features của model. Không có lịch sử thì hiển thị “chưa có dữ liệu”, không tự gán tỷ lệ WIN bằng 0.
 - Nếu một model inference lỗi, hiển thị lỗi tương ứng; không thay bằng kết quả giả. Dự báo tháng nằm ngoài dữ liệu quan sát phải có cảnh báo về phạm vi ngoại suy.
 - Forecast cho xem các horizon **1–6 tháng** thuộc snapshot đã lưu; không tự suy thêm khoảng tin cậy hay dự báo cho một khách/SKU khi chưa có model tương ứng.
-
-## Kỹ thuật và bảo mật khi chia sẻ
-
-Ứng dụng chỉ load data/model bundle cục bộ, sử dụng cache cho bảng và resources; kiểm tra tương thích schema, version và hash. Không train trong giao diện. Thiếu model/dữ liệu cần phát thông báo rõ thay vì âm thầm sinh số.
-
-Không đưa lên GitHub hoặc Streamlit Community Cloud công khai các artifact, Excel, khách hàng, dashboard có định danh, URL kết nối nội bộ hoặc `.streamlit/secrets.toml`. Repository công khai không chứa dữ liệu thật thì app có thể **không chạy đầy đủ**; muốn có demo public, cần xây **bộ dữ liệu tổng hợp nhân tạo riêng** và đánh giá lại kết quả trên bộ đó. Không lấy dữ liệu doanh nghiệp rồi đơn thuần thay tên cột/khách và xem là đã ẩn danh an toàn.
