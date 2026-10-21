@@ -1,0 +1,16 @@
+/* Small, presentation-only styles; navigation and controls use native components. */
+.block-container { max-width: 1440px; padding-top: 2rem; padding-bottom: 2rem; }
+h1 { font-size: 2rem; letter-spacing: -.03em; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.1rem; }
+.brand { color: #18243C; font-size: 1.2rem; font-weight: 800; padding: .5rem 0 1rem; }
+.brand span { color: #315EFB; }
+.panel-heading h3 { margin: 0; }
+.panel-heading p, .period-note p, .context-note p { color: #52627A; font-size: .9rem; }
+.panel-step { display: none; }
+.period-note, .context-note { padding: .8rem 0; }
+.result-footnote { color: #52627A; font-size: .85rem; padding-top: 1rem; }
+.customer-context { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .6rem; margin: 1rem 0; color: #35455E; }
+.customer-context > div { display: flex; flex-wrap: wrap; gap: .6rem; align-items: baseline; }
+.customer-avatar { display: none; }
+@media(max-width: 800px) { .block-container { padding: 1rem; } h1 { font-size: 1.7rem; } }

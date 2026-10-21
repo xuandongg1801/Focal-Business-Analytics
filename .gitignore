@@ -1,0 +1,70 @@
+# -------------------------------------------------
+# Focal Analytics - public-repository safety defaults
+# -------------------------------------------------
+
+# Environments, caches
+.venv/
+.venv*/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage*
+
+# Editors / operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Company data, derived tables and private fixtures
+/data/raw/
+/data/processed/
+/tests/fixtures/current_dataset/
+
+# Runtime outputs: models, CSV, figures, logs, audits
+/outputs/
+
+# Common accidentally exported / copied data anywhere
+*.xls
+*.xlsx
+*.xlsm
+*.csv
+*.parquet
+*.feather
+*.db
+*.sqlite
+*.sqlite3
+
+# Serialized models and training outputs
+*.pkl
+*.pickle
+*.joblib
+*.keras
+*.h5
+*.hdf5
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.pem
+*.key
+
+# Archives, logs, builds
+*.zip
+*.7z
+*.rar
+*.tar
+*.gz
+*.log
+build/
+dist/
+*.egg-info/
