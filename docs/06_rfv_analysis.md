@@ -1,24 +1,55 @@
-# Phân nhóm RFV
+# Phân nhóm khách hàng RFV (Recency – Frequency – Volume)
 
-Snapshot: 2025-12; một dòng mỗi mã khách khớp danh mục.
-Population: sales có KM không cực trị. Dòng HỦY hiện không có lượng, không vào population.
-Không có trạng thái hủy/hoàn tất chính thức cho mọi đơn để lọc sâu hơn.
+## 1. Định nghĩa và tập nghiên cứu
 
-R = số tháng từ lần ghi nhận KM gần nhất đến snapshot; thấp hơn tốt hơn.
-F = distinct order_row_id có KM; cao hơn nhiều lần ghi nhận hơn.
-V = tổng KM; cao hơn nhiều lượng hơn, không suy doanh thu/lợi nhuận. total_value chỉ là tham khảo.
+RFV ở đây dùng **V = Volume (KM)**, không phải Monetary Value (doanh thu). Phân nhóm phục vụ mô tả hành vi **ghi nhận đơn có lượng KM**, không dự đoán churn hay xác nhận tình trạng hợp tác thực tế.
 
-Điểm 1..4 = ceil(rank phần trăm × 4), average rank cho ties. R rank đảo chiều;
-F/V rank cùng chiều. Ties có cùng điểm, không bẻ ties bằng mã khách; ít quan sát có thể thiếu một số lớp điểm.
-Không dùng clustering hoặc dự đoán churn.
+- **Mốc quan sát:** 2025-12 (snapshot cuối kỳ dữ liệu trong project).
+- **Đơn đủ điều kiện:** đơn bán, có lượng quy đổi KM quan sát được, loại dòng bị gắn cờ cực trị theo quy tắc đã công bố.
+- **Định danh khách hợp lệ:** chỉ sử dụng mã khách hàng có thể đối chiếu với danh mục chính thức. Không đưa nhóm khách suy diễn từ hậu tố mã đơn vào RFV.
+- **Grain:** một khách hàng hợp lệ, một vector R/F/V tại thời điểm snapshot. Các dòng không đủ điều kiện không tham gia phép tính R/F/V.
 
-Nhãn heuristic, áp theo thứ tự: R=1 → Ít giao dịch gần đây; R/F/V đều >=3 → Gần đây,
-thường xuyên, lượng cao; F>=3 → Tần suất cao; còn lại → Nhóm còn lại.
-“Cao” là tương đối trong tập snapshot. Không dùng nhãn làm ground truth hay bằng chứng khách rời bỏ.
+## 2. Công thức tính
 
-| phan_khuc | customers | km |
+| Chỉ số | Công thức | Diễn giải |
 |---|---|---|
-| Gần đây, thường xuyên, lượng cao | 20 | 82718.5540 |
-| Nhóm còn lại | 27 | 1253.6000 |
-| Tần suất cao | 8 | 1669.1700 |
-| Ít giao dịch gần đây | 16 | 14776.5190 |
+| R (Recency) | Số tháng từ **lần ghi nhận KM đủ điều kiện gần nhất** tới snapshot | Càng nhỏ càng gần đây |
+| F (Frequency) | Số **đơn khác nhau** có KM đủ điều kiện của khách trong kỳ | Càng cao càng có nhiều lần ghi nhận |
+| V (Volume) | Tổng KM đủ điều kiện của khách | Càng lớn càng nhiều lượng ghi nhận, **không phải tiền** |
+
+Mỗi chỉ tiêu được xếp hạng thực nghiệm và chuyển thành điểm 1–4 theo `ceil(percentile_rank × 4)`. `R` được xếp theo chiều ngược với giá trị gốc để khách gần đây nhận điểm cao; `F` và `V` xếp thuận. Trường hợp đồng hạng dùng *average rank* nên không cố chia bằng mã khách, có thể thiếu điểm ở một số lớp.
+
+Nhãn phân khúc được áp dụng theo thứ tự ưu tiên trong `scripts/segmentation.py`:
+
+1. `R_score = 1` → **Ít giao dịch gần đây**.
+2. `R_score, F_score, V_score >= 3` → **Gần đây, thường xuyên, lượng cao**.
+3. `F_score >= 3` → **Tần suất cao**.
+4. Các trường hợp khác → **Nhóm còn lại**.
+
+## 3. Độ phủ mẫu và thiên lệch chọn mẫu
+
+| Độ phủ | Kết quả trong snapshot |
+|---|---:|
+| Mã khách trong danh mục chính thức | 504 |
+| Khách có mã chính thức và đủ điều kiện có trong RFV | 71 |
+| Tỷ lệ so với danh mục | 14.09% |
+| Nhóm khách suy diễn (thống kê EDA, **không phải khách RFV**) | 19 |
+| Tỷ trọng KM của các nhóm suy diễn trong tập EDA không cực trị | 87.75% |
+
+**Cần phân biệt hai mẫu số:**
+
+- **14.09%** = 71 / 504 là **tỷ lệ phủ khách có mã chính thức trong phân tích**, không phải tỷ lệ đơn thất bại và không chứng minh tất cả khách còn lại đã ngừng mua.
+- **87.75%** là **tỷ trọng sản lượng KM** được quy về các nhóm suy diễn khi thiếu mã khách trong tập phân tích EDA (không cực trị). Đây **không phải tỷ lệ khách hàng bị loại**. Các nhóm suy diễn không có định danh đủ tin cậy để được xem là những khách hàng độc lập.
+
+Sự thiếu hụt mã khách làm tập RFV thu hẹp và có nguy cơ **selection bias**: hành vi của khách có mã đầy đủ có thể khác nhóm chưa có mã. Vì vậy không thể ngoại suy tỷ trọng từng phân khúc RFV ra toàn bộ danh mục hoặc toàn bộ sản lượng doanh nghiệp.
+
+## 4. Kết quả phân khúc (chỉ số lượng, không công bố KM/giá trị)
+
+| Phân khúc | Số khách | Tỷ lệ trong mẫu RFV |
+| --- | --- | --- |
+| Gần đây, thường xuyên, lượng cao | 20 | 28.17% |
+| Tần suất cao | 8 | 11.27% |
+| Ít giao dịch gần đây | 16 | 22.54% |
+| Nhóm còn lại | 27 | 38.03% |
+
+Các ngưỡng “cao”, “gần đây” mang tính tương đối trong snapshot và quy tắc phân lớp. Phân khúc là **heuristic**, không phải ground truth về rời bỏ khách, khả năng đặt hàng trong tương lai hay lợi nhuận. Khi mở rộng dữ liệu cần cải thiện mã khách, chuẩn hóa thời gian và kiểm định độ ổn định theo kỳ.
