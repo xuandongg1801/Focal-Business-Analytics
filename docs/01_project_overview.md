@@ -9,7 +9,7 @@ Dự án xây dựng quy trình phân tích dữ liệu đơn hàng từ bảng 
 ## Sơ đồ hệ thống
 
 ```text
-Dữ liệu Excel nội bộ (chỉ lưu cục bộ, không đưa lên GitHub công khai)
+Dữ liệu Excel nội bộ (chỉ lưu cục bộ)
   └─ Kiểm tra schema / đối soát với nguồn
      ├─ Header đơn + sổ dòng nguồn (giữ lineage)
      ├─ Phân tích mã sản phẩm và phân bổ sản lượng có căn cứ
