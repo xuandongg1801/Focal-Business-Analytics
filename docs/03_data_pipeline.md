@@ -37,5 +37,3 @@
 - Trước khi tạo nhãn, pipeline đối soát tập header/item đã xử lý với nguồn theo khóa, số dòng và nội dung liên quan (outer reconciliation). Thiếu dòng, dư dòng, trùng khóa hoặc lệch dữ liệu phải báo lỗi thay vì im lặng bỏ qua.
 - Kiểm tra bảo toàn lượng theo **dòng nguồn + đơn vị**: lượng quy thuộc cộng lượng chưa quy thuộc phải bằng lượng nguồn khi có thể đối soát.
 - Các quy tắc dữ liệu kiểm thử nằm ở `tests/`, mô tả kết quả tổng hợp tại [04_data_quality.md](04_data_quality.md).
-
-**Bảo mật:** ví dụ và báo cáo công khai không ghi tên khách hàng, chuỗi mã đơn thực tế, đơn giá, hợp đồng, mô tả sản phẩm nguyên gốc hoặc hàng dữ liệu cụ thể.
