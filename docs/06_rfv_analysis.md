@@ -43,7 +43,7 @@ Nhãn phân khúc được áp dụng theo thứ tự ưu tiên trong `scripts/s
 
 Sự thiếu hụt mã khách làm tập RFV thu hẹp và có nguy cơ **selection bias**: hành vi của khách có mã đầy đủ có thể khác nhóm chưa có mã. Vì vậy không thể ngoại suy tỷ trọng từng phân khúc RFV ra toàn bộ danh mục hoặc toàn bộ sản lượng doanh nghiệp.
 
-## 4. Kết quả phân khúc (chỉ số lượng, không công bố KM/giá trị)
+## 4. Kết quả phân khúc
 
 | Phân khúc | Số khách | Tỷ lệ trong mẫu RFV |
 | --- | --- | --- |
